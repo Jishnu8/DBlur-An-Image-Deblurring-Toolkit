@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use or extend this work, please cite it as below."
+authors:
+- family-names: "Parayil Shibu"
+  given-names: "Jishnu"
+title: "DBlur: An Image Deblurring Toolkit"
+version: 1.0.0
+date-released: 2023-03-29
+url: "https://github.com/Jishnu8/DBlur-An-Image-Deblurring-Toolkit"
