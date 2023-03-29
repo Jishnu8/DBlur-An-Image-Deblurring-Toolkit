@@ -1,7 +1,23 @@
 # DBlur: An Image Deblurring Toolkit
 
-DBlur is an open-source python library for image deblurring. It is simple and highly versatile making it perfect 
-for both experts and non-experts in the field. 
+## Table of Contents
+
+1. [About](#1-about)
+2. [Installation](#2-installation)
+3. [Supported Models](#3-supported-models)
+4. [Datasets](#4-datasets)
+5. [Usage](#5-usage)
+    - [Training, testing, deblurring with default settings](#51-training-testing-deblurring-with-default-settings)
+    - [Customize training pipeline for a model](#52-customize-training-pipeline-for-a-model)
+    - [Customize testing pipeline for a model](#53-customize-testing-pipeline-for-a-model)
+    - [Deblur images with multiple pretrained models](#54-deblur-images-with-multiple-pretrained-models)
+6. [Call for Contributions](#6-call-for-contributions)
+7. [Citation](#7-citation)
+
+## 1. About
+
+[DBlur](https://pypi.org/project/dblur/) is an open-source python library for image deblurring. It is simple and highly 
+versatile making it perfect for both experts and non-experts in the field. 
 
 For example, training, testing and deblurring with numerous SOTA models can be performed with just 2-3 lines of code 
 with the default parameters mentioned in each paper. On the other hand, these methods can abe highly customised to 
@@ -10,7 +26,7 @@ section below.
 
 DBlur has a wide range functionalities which include:
 1. Numerous highly customisable SOTA model architectures for image deblurring. The list of supported models are 
-mentioned below.
+mentioned [here](#3-supported-models).
 2. Numerous popular and novel datasets which can be found 
 [here](https://www.kaggle.com/datasets/jishnuparayilshibu/a-curated-list-of-image-deblurring-datasets).
 3. Ready-to-use pipelines created according to the paper for training each of these models on a given dataset.
@@ -20,23 +36,14 @@ mentioned below.
 7. Deblurring images by combining multiple pretrained models in different ways.
 8. Common evaluations metrics such as PSNR, SSIM, MSE and Brisque. 
 
+## 2. Installation
+Install [Dblur](https://pypi.org/project/dblur/) with pip:
 
-## Call for Contributions
-
-Dblur is a project which is in active development. Any helpful comments and improvements are highly 
-encouraged. To do so, please open an issue in our official Github [page](). 
-
-In particular, due to the lack of GPUs on our side, the pretrained models for each of the model architectures are not 
-yet available. Hence, if you have trained any of the models on a particular dataset, you are highly encouraged to share
-this pretrained model on our official Github [page](). This way, the pretrained models can be added to the library. 
-
-## Installation
-Install dblur with pip:
 ```bash
 $ pip install dblur
 ```
 
-The following requirements shall be installed alongside dblur:
+The following requirements shall be installed alongside Dblur:
 
 * torch 
 * scipy
@@ -45,7 +52,7 @@ The following requirements shall be installed alongside dblur:
 * tensorboard
 * piq
 
-## Supported Models
+## 3. Supported Models
 1. [TextDBN](http://www.bmva.org/bmvc/2015/papers/paper006/paper006.pdf)
 2. [MSCNN](https://arxiv.org/abs/1702.02359)
 3. [SRN](https://arxiv.org/abs/1802.01770)
@@ -54,13 +61,13 @@ The following requirements shall be installed alongside dblur:
 6. [NAFNet](https://arxiv.org/abs/2204.04676)
 7. [FNAFNet](https://arxiv.org/abs/2111.11745)
 
-## Datasets
+## 4. Datasets
 
 A curated list of popular and custom datasets for general, face, and text deblurring can be found 
 [here](https://www.kaggle.com/datasets/jishnuparayilshibu/a-curated-list-of-image-deblurring-datasets). This datasets 
 have been preprocessed/structured so that they can be easily used with our library. 
 
-## Usage
+## 5. Usage
 Before diving into the usage of the library, it is important to look at a brief overview of the structure of the 
 library. The two main classes associated with each deblurring model is a respective Trainer and Tester class. These 
 classes for each model are all subclassed from a main BaseTrainer and BaseTester class. 
@@ -86,7 +93,7 @@ All methods which are part of the public API have an elaborate docstring. Hence,
 relatively straightforward. 
 Following is a brief description on the usage of the library.
 
-### 1. Training, testing, deblurring with default settings.
+### 5.1. Training, testing, deblurring with default settings.
 
 This section is mainly aimed at non-experts who would like to train, test a model or deblur images with a pretrained 
 model with default settings provided in each paper. By default settings, we mean:
@@ -121,7 +128,7 @@ deblur_imgs(model_path, "blurred_imgs_path", "sharp_imgs_path")
 deblur_single_img(model_path, "blurred_img_path", "sharp_img_path")
 ```
 
-### 2. Customize training pipeline for a model
+### 5.2. Customize training pipeline for a model
 
 The following code illustrates the entire training pipeline for the Restormer (can be generalised to any other model).
 
@@ -154,7 +161,7 @@ Each method of the RestormerTrainer object has multiple parameters that can be s
 the docstring of each method. The example above only illustrates few of the parameters that can be specified. Moreover, 
 the user is not limited to using the loss function or optimizer given by the methods of the RestormerTrainer object.
  
-### 3. Customize testing pipeline for a model
+### 5.3. Customize testing pipeline for a model
 
 The following code illustrates the entire testing pipeline for the Restormer (can be generalised to any other model).
 
@@ -196,7 +203,7 @@ restormer_tester.deblur_single_img(model,
 Each method of the RestormerTester object has multiple parameters that can be set accordingly. This can be found in 
 the docstring of each method. The example above only illustrates few of the parameters that can be specified. 
 
-### 4. Deblur images with multiple pretrained models
+### 5.4. Deblur images with multiple pretrained models
 
 Dblur provides two ways in which you can combine multiple pretrained models to deblur images.
 
@@ -252,7 +259,16 @@ multi_modal_deblur_by_brsique(models=[model1, model2],
                               overlap_size=0)
 ```
 
-## Citation
+## 6. Call for Contributions
+
+Dblur is a project which is in active development. Any helpful comments and improvements are highly 
+encouraged. To do so, please open an issue in this Github page. 
+
+In particular, due to the lack of GPUs on our side, the pretrained models for each of the model architectures are not 
+yet available. Hence, if you have trained any of the models on a particular dataset, you are highly encouraged to share
+this pretrained model on our Github page. This way, the pretrained models can be added to the library. 
+
+## 7. Citation
 If you use or extend this work, please consider citing it as below:
 
 ```
